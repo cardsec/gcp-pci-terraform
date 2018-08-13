@@ -25,7 +25,7 @@ resource "google_compute_shared_vpc_host_project" "pci_shared" {
 # Create the hosted network.
 resource "google_compute_network" "pci_shared_network" {
   name                    = "pci-shared-network"
-  auto_create_subnetworks = "true"
+  auto_create_subnetworks = "false"
   project                 = "${google_compute_shared_vpc_host_project.pci_shared.project}"
 }
 

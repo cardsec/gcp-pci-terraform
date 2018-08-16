@@ -4,11 +4,11 @@ resource "google_compute_instance" "pci_web" {
   project      = "${google_project.in_scope_cde.project_id}"
   machine_type = "f1-micro"
   zone         = "${var.region_zone}"
-  tags = ["name", "pci-web "]
+  tags = ["name", "pciweb"]
 
   boot_disk {
     initialize_params {
-      image = "projects/debian-cloud/global/images/family/debian-8"
+      image = "projects/debian-cloud/global/images/family/debian-9"
     }
   }
 
@@ -25,7 +25,7 @@ resource "google_compute_instance" "pci_web" {
   }
 
   metadata {
-    name = "pci-web"
+    name = "pciweb"
   }
 
   metadata_startup_script = "echo I am PCI > /test.txt"

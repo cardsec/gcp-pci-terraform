@@ -2,7 +2,7 @@
 resource "google_compute_instance" "pci_web" {
   name         = "pci-web"
   project      = "${google_project.in_scope_cde.project_id}"
-  machine_type = "f1-micro"
+  machine_type = "n1-standard-1"
   zone         = "${var.region_zone}"
   tags = ["name", "pciweb"]
 

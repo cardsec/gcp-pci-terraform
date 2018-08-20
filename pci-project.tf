@@ -32,7 +32,7 @@ resource "google_compute_network" "pci_shared_network" {
 
 # Allow the hosted network to be hit over ICMP, SSH, and HTTP.
 resource "google_compute_firewall" "pci_shared_network" {
-  name  = "allow-ssh-http-icp"
+  name  = "allow-ssh-icmp"
   network = "${google_compute_network.pci_shared_network.self_link}"
   project = "${google_compute_network.pci_shared_network.project}"
   allow {
@@ -40,7 +40,7 @@ resource "google_compute_firewall" "pci_shared_network" {
   }
   allow {
     protocol = "tcp"
-    ports = ["22", "80"]
+    ports = ["22"]
   }
 }
 
@@ -55,7 +55,8 @@ resource "google_project" "in_scope_cde" {
 resource "google_project_services" "in_scope_cde" {
  project = "${google_project.in_scope_cde.project_id}"
  services = [
-   "compute.googleapis.com"
+   "compute.googleapis.com",
+   "sql.googleapis.com"
  ]
 }
 

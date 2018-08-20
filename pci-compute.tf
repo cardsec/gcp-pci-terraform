@@ -28,7 +28,7 @@ resource "google_compute_instance" "pci_web" {
     name = "pciweb"
   }
 
-  metadata_startup_script = "echo I am PCI > /test.txt"
+  metadata_startup_script = "${file("scripts/apache.sh")}"
 
   service_account {
       scopes = ["https://www.googleapis.com/auth/compute.readonly"]

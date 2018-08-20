@@ -4,7 +4,7 @@ resource "google_compute_instance" "pci_web" {
   project      = "${google_project.in_scope_cde.project_id}"
   machine_type = "n1-standard-1"
   zone         = "${var.region_zone}"
-  tags = ["name", "pciweb"]
+  tags = ["pciweb"]
 
   boot_disk {
     initialize_params {

@@ -33,8 +33,8 @@ resource "google_compute_network" "pci_shared_network" {
 # Allow the hosted network to be hit over ICMP, SSH, and HTTP.
 resource "google_compute_firewall" "pci_shared_network" {
   name  = "allow-ssh-http-icp"
-  network = "${google_compute_network.nonpci_shared_network.self_link}"
-  project = "${google_compute_network.nonpci_shared_network.project}"
+  network = "${google_compute_network.pci_shared_network.self_link}"
+  project = "${google_compute_network.pci_shared_network.project}"
   allow {
     protocol = "icmp"
   }

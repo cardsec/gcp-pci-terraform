@@ -20,3 +20,7 @@ resource "google_sql_database_instance" "pci_master" {
   }
   depends_on = ["google_compute_instance.pci_web", "google_project_services.in_scope_cde"]
 }
+
+output "cloudsql_address" {
+  value = "${google_sql_database_instance.pci_master.ip_address.0.ip_address}"
+}

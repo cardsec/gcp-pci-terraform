@@ -3,6 +3,7 @@ resource "google_compute_address" "pci_web" {
   name = "pci-web"
   project      = "${google_project.in_scope_cde.project_id}"
   region = "${var.region}"
+  depends_on = ["google_project_services.in_scope_cde"],
 }
 
 # Create a VM which hosts a PCI web page

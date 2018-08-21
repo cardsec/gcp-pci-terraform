@@ -35,25 +35,19 @@ The project cannot be created because you have exceeded your allotted project qu
 
 You will need to create an new service account or increase your limits
 
-$ export TF_ADMIN=x-${USER}-terraform-admin
-$ gcloud projects create ${TF_ADMIN} \
-  --organization ${TF_VAR_org_id} \
-  --set-as-default
-$ gcloud beta billing projects link ${TF_ADMIN} \
-  --billing-account ${TF_VAR_billing_account}
 
-$ gcloud iam service-accounts create terraform \
+$ gcloud iam service-accounts create terraform2 \
   --display-name "Terraform admin account"
 
 $ gcloud iam service-accounts keys create ${TF_CREDS} \
-  --iam-account terraform@${TF_ADMIN}.iam.gserviceaccount.com
+  --iam-account terraform2@${TF_ADMIN}.iam.gserviceaccount.com
 
 $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/viewer
 
 $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/storage.admin
 
   gcloud services enable cloudresourcemanager.googleapis.com
@@ -63,34 +57,22 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
 
 
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/resourcemanager.projectCreator
 
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/billing.admin
 
   #sharedVPC
     gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/compute.xpnAdmin
 
   #cloudSQL
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}     --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com     --role roles/cloudsql.admin
-
-    gsutil mb -p ${TF_ADMIN} gs://${TF_ADMIN}
-
-    cat > backend.tf <<EOF
-    terraform {
-     backend "gcs" {
-       bucket  = "${TF_ADMIN}"
-       path    = "/terraform.tfstate"
-       project = "${TF_ADMIN}"
-     }
-    }
-    EOF
-
-$ gsutil versioning set on gs://${TF_ADMIN}
+  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}  \
+  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com  \
+    --role roles/cloudsql.admin
 
 $ export GOOGLE_APPLICATION_CREDENTIALS=${TF_CREDS}
 $ export GOOGLE_PROJECT=${TF_ADMIN}

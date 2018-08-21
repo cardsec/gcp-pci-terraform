@@ -61,6 +61,7 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
   gcloud services enable iam.googleapis.com
   gcloud services enable compute.googleapis.com
 
+
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
     --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/resourcemanager.projectCreator
@@ -73,6 +74,9 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
     gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
     --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/compute.xpnAdmin
+
+  #cloudSQL
+  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}     --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com     --role roles/cloudsql.admin
 
     gsutil mb -p ${TF_ADMIN} gs://${TF_ADMIN}
 

@@ -12,7 +12,8 @@ resource "google_project" "nonpci_shared" {
 resource "google_project_services" "nonpci_shared" {
  project = "${google_project.nonpci_shared.project_id}"
  services = [
-   "compute.googleapis.com"
+   "compute.googleapis.com",
+   "oslogin.googleapis.com"
  ]
 }
 

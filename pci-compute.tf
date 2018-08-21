@@ -1,3 +1,8 @@
+resource "google_compute_address" "pci_web" {
+  name = "pci-web"
+  project      = "${google_project.in_scope_cde.project_id}"
+  region = "${var.region}"
+}
 # Create a VM which hosts a PCI web page
 resource "google_compute_instance" "pci_web" {
   name         = "pci-web"
@@ -20,7 +25,7 @@ resource "google_compute_instance" "pci_web" {
     network = "${google_compute_network.pci_shared_network.self_link}"
 
     access_config {
-      // Ephemeral IP
+      nat_ip = "${google_compute_address.pci_web.address}"
     }
   }
 
@@ -34,6 +39,6 @@ resource "google_compute_instance" "pci_web" {
       scopes = ["https://www.googleapis.com/auth/compute.readonly"]
     }
 
-  depends_on = ["google_project_services.in_scope_cde"]
+  depends_on = ["google_project_services.in_scope_cde", "google_compute_address.pci_web"]
 
 }

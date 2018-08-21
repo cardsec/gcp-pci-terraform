@@ -12,7 +12,8 @@ resource "google_project" "pci_shared" {
 resource "google_project_services" "pci_shared" {
  project = "${google_project.pci_shared.project_id}"
  services = [
-   "compute.googleapis.com"
+   "compute.googleapis.com",
+   "oslogin.googleapis.com"
  ]
 }
 
@@ -56,7 +57,10 @@ resource "google_project_services" "in_scope_cde" {
  project = "${google_project.in_scope_cde.project_id}"
  services = [
    "compute.googleapis.com",
-   "sql.googleapis.com"
+   "oslogin.googleapis.com",
+   "sqladmin.googleapis.com",
+   "sql-component.googleapis.com",
+   "dlp.googleapis.com"
  ]
 }
 

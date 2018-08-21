@@ -50,12 +50,6 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
   --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/storage.admin
 
-  gcloud services enable cloudresourcemanager.googleapis.com
-  gcloud services enable cloudbilling.googleapis.com
-  gcloud services enable iam.googleapis.com
-  gcloud services enable compute.googleapis.com
-
-
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
     --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
     --role roles/resourcemanager.projectCreator
@@ -73,6 +67,3 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}  \
   --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com  \
     --role roles/cloudsql.admin
-
-$ export GOOGLE_APPLICATION_CREDENTIALS=${TF_CREDS}
-$ export GOOGLE_PROJECT=${TF_ADMIN}

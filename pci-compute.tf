@@ -21,7 +21,7 @@ resource "google_compute_instance" "pci_web" {
   scratch_disk {
   }
   network_interface {
-    network = "${google_compute_network.pci_shared_network.self_link}"
+    subnetwork = "${google_compute_subnetwork.pci_subnets.self_link}"
     access_config {
       nat_ip = "${google_compute_address.pci_web.address}"
     }

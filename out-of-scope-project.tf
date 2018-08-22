@@ -1,4 +1,4 @@
-out-of-scope# PCI application project
+# PCI application project
 resource "random_id" "random" {
  byte_length = 8
 }
@@ -16,7 +16,6 @@ resource "google_project_services" "out_of_scope" {
    "oslogin.googleapis.com",
    "sqladmin.googleapis.com",
    "sql-component.googleapis.com",
-   "dlp.googleapis.com"
  ]
 }
 

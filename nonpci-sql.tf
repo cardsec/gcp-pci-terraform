@@ -18,7 +18,7 @@ resource "google_sql_database_instance" "nonpci_master" {
       }
     }
   }
-  depends_on = ["google_compute_instance.nonpci_web", "google_project_services.out_of_scope_cde"]
+  depends_on = ["google_compute_instance.nonpci_web", "google_project_services.out_of_scope"]
 }
 
 output "cloudsql_address" {

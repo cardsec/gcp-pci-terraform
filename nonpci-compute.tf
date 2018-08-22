@@ -1,5 +1,5 @@
 #create ip address for GCE
-resource "google_compute_address" "nonnonpci_web" {
+resource "google_compute_address" "nonpci_web" {
   name = "nonpci-web"
   project      = "${google_project.out_of_scope.project_id}"
   region = "${var.region}"

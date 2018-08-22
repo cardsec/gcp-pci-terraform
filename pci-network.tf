@@ -3,7 +3,6 @@ resource "google_compute_network" "pci_shared_network" {
   name                    = "pci-shared-network"
   auto_create_subnetworks = "false"
   project                 = "${google_compute_shared_vpc_host_project.pci_shared.project}"
-  depends_on              = ["google_compute_shared_vpc_service_project.in_scope_cde"]
 }
 
 resource "google_compute_subnetwork" "pci_subnets" {

@@ -23,13 +23,6 @@ resource "google_compute_shared_vpc_host_project" "nonpci_shared" {
   depends_on = ["google_project_services.nonpci_shared"]
 }
 
-# Create the hosted network.
-resource "google_compute_network" "nonpci_shared_network" {
-  name                    = "nonpci-shared-network"
-  auto_create_subnetworks = "false"
-  project                 = "${google_compute_shared_vpc_host_project.nonpci_shared.project}"
-}
-
 output "nonpci_project_id" {
  value = "${google_project.nonpci_shared.project_id}"
 }

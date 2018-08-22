@@ -23,7 +23,6 @@ resource "google_compute_shared_vpc_host_project" "pci_shared" {
   depends_on = ["google_project_services.pci_shared"]
 }
 
-
 output "pci_project_id" {
  value = "${google_project.pci_shared.project_id}"
 }

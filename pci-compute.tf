@@ -29,7 +29,7 @@ resource "google_compute_instance" "pci_web" {
   metadata {
     name = "pciweb"
   }
-  metadata_startup_script = "${file("scripts/apache.sh")}"
+  metadata_startup_script = "${file("scripts/pci-apache.sh")}"
   service_account {
       scopes = ["https://www.googleapis.com/auth/compute.readonly"]
     }

@@ -14,8 +14,6 @@ resource "google_project_services" "in_scope_cde" {
  services = [
    "compute.googleapis.com",
    "oslogin.googleapis.com",
-   "sqladmin.googleapis.com",
-   "sql-component.googleapis.com",
    "dlp.googleapis.com"
  ]
 }
@@ -23,7 +21,8 @@ resource "google_project_services" "in_scope_cde" {
 resource "google_compute_shared_vpc_service_project" "in_scope_cde" {
   host_project = "${google_project.pci_shared.project_id}"
   service_project = "${google_project.in_scope_cde.project_id}"
-  depends_on = ["google_compute_shared_vpc_host_project.pci_shared", "google_project_services.in_scope_cde"]
+  depends_on = ["google_compute_shared_vpc_host_project.pci_shared",
+                "google_project_services.in_scope_cde"]
 }
 
 output "in_scope_cde_project_id"{

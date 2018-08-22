@@ -1,8 +1,8 @@
-resource "google_sql_database_instance" "pci_master" {
-  name = "pci-master-instance"
+resource "google_sql_database_instance" "nonpci_master" {
+  name = "nonpci-master-instance"
   database_version = "MYSQL_5_7"
   region = "${var.region}"
-  project = "${google_project.in_scope_cde.project_id}"
+  project = "${google_project.out_of_scope.project_id}"
 
   settings {
     tier = "db-f1-micro"
@@ -18,9 +18,9 @@ resource "google_sql_database_instance" "pci_master" {
       }
     }
   }
-  depends_on = ["google_compute_instance.pci_web", "google_project_services.in_scope_cde"]
+  depends_on = ["google_compute_instance.nonpci_web", "google_project_services.out_of_scope_cde"]
 }
 
 output "cloudsql_address" {
-  value = "${google_sql_database_instance.pci_master.ip_address.0.ip_address}"
+  value = "${google_sql_database_instance.nonpci_master.ip_address.0.ip_address}"
 }

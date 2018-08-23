@@ -1,5 +1,7 @@
 #set up is borrowed from https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
+https://cloud.google.com/iam/docs/understanding-roles
+
 gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
   --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/resourcemanager.projectCreator
@@ -13,6 +15,10 @@ gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
   --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/compute.xpnAdmin
 
+#IAM for stackdriver
+gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
+  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+  --role roles/logging.configWriter
 
   removing liens on shared vpcs
   https://cloud.google.com/vpc/docs/deprovisioning-shared-vpc#disable_host_project

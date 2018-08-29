@@ -1,8 +1,7 @@
-
-
 provider "google" {
- region = "${var.region}"
+  region = "${var.region}"
 }
+
 variable "project_name" {}
 
 variable "region" {
@@ -15,12 +14,12 @@ variable "region_zone" {
 
 variable "org_id" {
   description = "The ID of the Google Cloud Organization."
-  default = "822294951214"
+  default     = "822294951214"
 }
 
 variable "billing_account" {
   description = "The ID of the associated billing account (optional)."
-  default = "01A4FD-250E6F-FF9F5C"
+  default     = "01A4FD-250E6F-FF9F5C"
 }
 
 variable "credentials_file_path" {

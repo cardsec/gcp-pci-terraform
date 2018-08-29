@@ -20,6 +20,11 @@ gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
   --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/logging.configWriter
 
+# cloud armor
+gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
+  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
+  --role roles/compute.securityAdmin
+
   removing liens on shared vpcs
   https://cloud.google.com/vpc/docs/deprovisioning-shared-vpc#disable_host_project
 

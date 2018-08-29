@@ -44,19 +44,19 @@ resource "google_compute_backend_service" "pci_web" {
   timeout_sec = 10
   enable_cdn  = false
   security_policy = "${google_compute_security_policy.pci_policy.self_link}"
+  health_checks = ["${google_compute_http_health_check.default.self_link}"]
 
   backend {
-    group = "${google_compute_instance_group_manager.pci_webservers.instance_group}"
+    group = "${google_compute_instance_group.pci_webservers.self_link}"
   }
 
-  health_checks = ["${google_compute_http_health_check.default.self_link}"]
 }
 
 resource "google_compute_instance_group" "pci_webservers" {
   name               = "pci-webservers"
   zone               = "${var.region_zone}"
   project            = "${google_project.in_scope_cde.project_id}"
-  instance           = [ "${google_compute_instance.pci_web.self_link}"]
+  instances          = [ "${google_compute_instance.pci_web.self_link}"]
 
   named_port {
     name = "http"
@@ -72,7 +72,7 @@ resource "google_compute_target_pool" "pci_web" {
   ]
 
   health_checks = [
-    "${google_compute_http_health_check.health.self_link}",
+    "${google_compute_http_health_check.default.self_link}",
   ]
 }
 

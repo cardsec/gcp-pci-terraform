@@ -41,6 +41,7 @@ resource "google_compute_backend_service" "pci_web" {
   name = "pci-web-backend"
   port_name   = "http"
   protocol    = "HTTP"
+  project      = "${google_project.in_scope_cde.project_id}"
   timeout_sec = 10
   enable_cdn  = false
   security_policy = "${google_compute_security_policy.pci_policy.self_link}"

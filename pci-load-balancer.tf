@@ -8,12 +8,14 @@ resource "google_compute_global_forwarding_rule" "pci_rule" {
 
 resource "google_compute_target_http_proxy" "pci_proxy" {
   name    = "pci-proxy"
+  project    = "${google_project.in_scope_cde.project_id}"
   url_map = "${google_compute_url_map.pci_map.self_link}"
 }
 
 resource "google_compute_url_map" "pci_map" {
   name            = "url-map"
   description     = "a description"
+  project    = "${google_project.in_scope_cde.project_id}"
   default_service = "${google_compute_backend_service.pci_web.self_link}"
 
   host_rule {
@@ -33,5 +35,5 @@ resource "google_compute_url_map" "pci_map" {
 }
 
 output "ip" {
-  value = "{google_compute_global_forwarding_rule.pci_web.ip_address}"
+  value = "${google_compute_global_forwarding_rule.pci_web.ip_address}"
 }

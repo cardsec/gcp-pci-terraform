@@ -33,7 +33,3 @@ resource "google_compute_url_map" "pci_map" {
     }
   }
 }
-
-output "ip" {
-  value = "${google_compute_global_forwarding_rule.pci_web.ip_address}"
-}

@@ -41,6 +41,9 @@ p673528304634-ld4b476ac-5ab3-4021-825b-7d56ed09ecf3  xpn.googleapis.com  This li
 $ gcloud alpha resource-manager liens delete p673528304634-ld4b476ac-5ab3-4021-825b-7d56ed09ecf3 --project nonpci-a556d36d53435f23
 Deleted [liens/p673528304634-ld4b476ac-5ab3-4021-825b-7d56ed09ecf3].
 
+Or the one liner:
+$gcloud alpha resource-manager liens list --project pci-84f5a5b09bf5e045 |  gcloud alpha resource-manager liens delete `awk 'FNR == 2 {print $1}'` --project pci-84f5a5b09bf5e045
+
 #If you get:
 The project cannot be created because you have exceeded your allotted project quota.
 

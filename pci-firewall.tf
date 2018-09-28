@@ -11,7 +11,7 @@ resource "google_compute_firewall" "pci_firewall" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80"]
+    ports    = ["22"]
   }
 
   source_tags = ["pciweb"]

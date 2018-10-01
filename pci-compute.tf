@@ -67,6 +67,7 @@ resource "google_compute_instance_group" "pci_webservers" {
 
 resource "google_compute_target_pool" "pci_web" {
   name = "pci-web-pool"
+  project = "${google_project.in_scope_cde.project_id}"
 
   instances = [
     "${google_compute_instance.pci_web.self_link}",

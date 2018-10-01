@@ -5,8 +5,8 @@ resource "random_id" "random" {
 
 resource "google_project" "out_of_scope" {
   name            = "out-of-scope-${var.project_name}"
-  project_id      = "in-scope-cde-${random_id.random.hex}"
-  billing_account = "${var.billing_account}"
+  project_id      = "out-scope-cde-${random_id.random.hex}"
+  billing_account = "${var.billing_account2}"
   org_id          = "${var.org_id}"
 }
 

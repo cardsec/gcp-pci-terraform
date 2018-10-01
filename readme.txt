@@ -81,3 +81,8 @@ $ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
   gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}  \
   --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com  \
     --role roles/cloudsql.admin
+
+  #orgadmin for foreseti IAM
+  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
+  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
+  --role roles/resourcemanager.organizationAdmin

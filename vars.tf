@@ -22,6 +22,11 @@ variable "billing_account" {
   default     = "01A4FD-250E6F-FF9F5C"
 }
 
+variable "billing_account2" {
+  description = "The ID of the associated billing account (optional)."
+  default     = "0164B1-4C051F-1254C8"
+}
+
 variable "credentials_file_path" {
   description = "Location of the credentials to use."
   default     = "/Users/anners/.config/gcloud/terraform-admin.json"

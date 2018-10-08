@@ -13,5 +13,5 @@ These terraform files build out an example PCI architecture in GCP. These have n
 
 ## Architecture
 - PCI Shared VPC
-⋅⋅* In Scope CDE Project
+  * In Scope CDE Project
 - Non-PCI Shared VPC

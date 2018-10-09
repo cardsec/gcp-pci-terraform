@@ -13,9 +13,7 @@ These terraform files build out an example PCI architecture in GCP. These have n
 - [Terraform](https://www.terraform.io/downloads.html)
 
 ## Architecture
-Diagram:
-![alt text][diagram]
-[diagram]: diagrams/PCIterraform.png "diagram"
+![architecture diagram](diagrams/PCIterraform.png)
 - PCI Shared VPC
   * VPC peering with Non-PCI Shared VPC
   * PCI Firewall allows inbound ssh

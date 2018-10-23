@@ -1,29 +1,4 @@
-#set up is borrowed from https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform
 
-https://cloud.google.com/iam/docs/understanding-roles
-
-gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/resourcemanager.projectCreator
-
-gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/billing.admin
-
-#sharedVPC
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/compute.xpnAdmin
-
-#IAM for stackdriver
-gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/logging.configWriter
-
-# cloud armor
-gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/compute.securityAdmin
 
   removing liens on shared vpcs
   https://cloud.google.com/vpc/docs/deprovisioning-shared-vpc#disable_host_project
@@ -48,41 +23,3 @@ $gcloud alpha resource-manager liens list --project pci-84f5a5b09bf5e045 |  gclo
 The project cannot be created because you have exceeded your allotted project quota.
 
 You will need to create an new service account or increase your limits
-
-
-$ gcloud iam service-accounts create terraform2 \
-  --display-name "Terraform admin account"
-
-$ gcloud iam service-accounts keys create ${TF_CREDS} \
-  --iam-account terraform2@${TF_ADMIN}.iam.gserviceaccount.com
-
-$ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
-  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/viewer
-
-$ gcloud projects add-iam-policy-binding ${TF_ADMIN} \
-  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/storage.admin
-
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-    --role roles/resourcemanager.projectCreator
-
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-    --role roles/billing.admin
-
-  #sharedVPC
-    gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-    --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-    --role roles/compute.xpnAdmin
-
-  #cloudSQL
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id}  \
-  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com  \
-    --role roles/cloudsql.admin
-
-  #orgadmin for foreseti IAM
-  gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
-  --member serviceAccount:terraform2@${TF_ADMIN}.iam.gserviceaccount.com \
-  --role roles/resourcemanager.organizationAdmin

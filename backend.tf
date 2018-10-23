@@ -1,7 +1,7 @@
 terraform {
-  backend "gcs" {
-    bucket  = "gcp-pci-terraform-admin"
-    path    = "/terraform.tfstate"
-    project = "gcp-pci-terraform-admin"
-  }
+ backend "gcs" {
+   bucket  = "pci-demo-terraform-admin"
+   prefix  = "terraform/state"
+   project = "pci-demo-terraform-admin"
+ }
 }

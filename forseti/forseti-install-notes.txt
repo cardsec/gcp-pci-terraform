@@ -1,0 +1,7 @@
+#Forseti install notes
+- Service account
+-- enable G Suite Domain-wide delegation cannot be done via TF https://github.com/terraform-providers/terraform-provider-google/issues/1959
+
+- key.json file in module
+-- it would be nice to do credentials_file_path        = "${base64decode(google_service_account_key.forseti.private_key)}"
+-- looks like the foresti install scripts need to be updated

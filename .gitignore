@@ -1,4 +1,5 @@
+.DS_Store
 backend.tf
-forseti.json
-forseti-security/*
+forseti/forseti.json
+forseti/forseti-security/*
 .terraform/*

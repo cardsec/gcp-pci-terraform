@@ -1,7 +1,7 @@
 terraform {
  backend "gcs" {
-   bucket  = "pci-demo-terraform-admin"
+   bucket  = "pci-demo-terraform"
    prefix  = "terraform/state"
-   project = "pci-demo-terraform-admin"
+   project = "pci-demo-terraform"
  }
 }

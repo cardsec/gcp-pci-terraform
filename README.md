@@ -115,6 +115,9 @@ export GOOGLE_PROJECT=${TF_ADMIN}
 - `terraform apply` to apply the infrastructure build
 - `terraform destroy` to destroy the built infrastructure
 
+### Install Forseti
+The instructions can be found [here](forseti/README.md)
+
 ## Requirements
 ### Installation Dependencies
 - [Terraform](https://www.terraform.io/downloads.html)

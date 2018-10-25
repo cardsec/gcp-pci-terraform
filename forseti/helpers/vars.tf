@@ -28,3 +28,8 @@ variable "credentials_file_path" {
   description = "Location of the credentials to use."
   default     = "/Users/anners/.config/gcloud/anners-demo-terraform-admin.json"
 }
+
+variable "vpc_project" {
+  default = "Project id"
+  default = "nonpci-9d4e5017c0824129"
+}

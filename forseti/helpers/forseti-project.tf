@@ -1,8 +1,11 @@
 # forseti project
+resource "random_id" "random" {
+  byte_length = 8
+}
 resource "google_project" "forseti" {
   name            = "forseti-${var.project_name}"
   project_id      = "forseti-${random_id.random.hex}"
-  billing_account = "${var.billing_account2}"
+  billing_account = "${var.billing_account}"
   org_id          = "${var.org_id}"
 }
 
@@ -26,12 +29,9 @@ resource "google_project_services" "forseti" {
 }
 
 resource "google_compute_shared_vpc_service_project" "forseti" {
-  host_project    = "${google_project.nonpci_shared.project_id}"
+  host_project    = "${var.vpc_project}"
   service_project = "${google_project.forseti.project_id}"
 
-  depends_on = ["google_compute_shared_vpc_host_project.nonpci_shared",
-    "google_project_services.forseti",
-  ]
 }
 
 # create foresti service account

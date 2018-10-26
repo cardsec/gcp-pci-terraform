@@ -15,10 +15,10 @@ resource "google_project_services" "stackdriver" {
 }
 
 resource "google_compute_shared_vpc_service_project" "stackdriver" {
-  host_project    = "${google_project.nonpci_shared.project_id}"
+  host_project    = "${google_project.mgmt_shared.project_id}"
   service_project = "${google_project.stackdriver.project_id}"
 
-  depends_on = ["google_compute_shared_vpc_host_project.nonpci_shared",
+  depends_on = ["google_compute_shared_vpc_host_project.mgmt_shared",
     "google_project_services.stackdriver",
   ]
 }

@@ -183,3 +183,7 @@ resource "google_service_account_iam_binding" "admin-account-iam" {
 output "forseti_project_id" {
   value = "${google_project.forseti.project_id}"
 }
+
+output "foresti_service_account" {
+  value = "${google_service_account.forseti.email}"
+}

@@ -2,7 +2,8 @@ provider "google" {
   region = "${var.region}"
 }
 
-variable "project_name" {}
+variable "project_name" {
+  default = "pci-dss-demo"}
 
 variable "region" {
   default = "us-central1"
@@ -31,5 +32,5 @@ variable "credentials_file_path" {
 
 variable "vpc_project" {
   default = "Project id"
-  default = "nonpci-9d4e5017c0824129"
+  default = "mgmt-4caea92a5700951a"
 }

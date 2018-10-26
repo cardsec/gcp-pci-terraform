@@ -3,7 +3,7 @@ resource "random_id" "pci_id" {
 }
 
 resource "google_project" "pci_shared" {
-  name            = "pci-x-${var.project_name}"
+  name            = "pci-${var.project_name}"
   project_id      = "pci-${random_id.pci_id.hex}"
   billing_account = "${var.billing_account}"
   org_id          = "${var.org_id}"

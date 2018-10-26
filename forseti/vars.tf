@@ -2,7 +2,9 @@ provider "google" {
   region = "${var.region}"
 }
 
-variable "project_name" {}
+variable "project_name" {
+  default = "pci-dss-demo"
+}
 
 variable "region" {
   default = "us-central1"

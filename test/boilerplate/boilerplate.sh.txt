@@ -1,4 +1,3 @@
-#! /bin/bash
 # Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +11,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-sudo apt-get update
-sudo apt-get install -y apache2
-cat <<EOF > /var/www/html/index.html
-<html><body><h1>PCI</h1>
-<p>This is a PCI Site!</p>
-</body></html>
-EOF
-sudo service apache2 restart

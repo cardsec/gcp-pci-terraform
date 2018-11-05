@@ -5,3 +5,5 @@ forseti/forseti-security/*
 .terraform/*
 forseti/helpers/.terraform
 .terraform
+
+*.pyc

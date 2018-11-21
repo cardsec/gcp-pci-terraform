@@ -3,7 +3,7 @@ These terraform files build out an example PCI architecture in GCP. These have n
 
 ## Usage
 ### set up TF environment
-Set-up borrowed [from](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraformreadme.txt) please read this for a detailed description of what is going on.
+Set-up borrowed [from](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) please read this for a detailed description of what is going on.
 ```
 gcloud organizations list
 gcloud beta billing accounts list

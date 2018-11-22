@@ -31,12 +31,12 @@ variable "region_zone" {
 
 variable "org_id" {
   description = "The ID of the Google Cloud Organization."
-  default     = "870160332389"
+  default     = ""
 }
 
 variable "billing_account" {
   description = "The ID of the associated billing account (optional)."
-  default     = "01A865-FEFFAE-D9C1D9"
+  default     = ""
 }
 
 

@@ -18,7 +18,7 @@ provider "google" {
 }
 
 variable "project_name" {
-  default = "pci-dss"
+  default = "dev-pci-dss-demo"
 }
 
 variable "region" {
@@ -31,12 +31,12 @@ variable "region_zone" {
 
 variable "org_id" {
   description = "The ID of the Google Cloud Organization."
-  default     = ""
+  default     = "870160332389"
 }
 
 variable "billing_account" {
   description = "The ID of the associated billing account (optional)."
-  default     = ""
+  default     = "01A865-FEFFAE-D9C1D9"
 }
 
 

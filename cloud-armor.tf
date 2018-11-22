@@ -42,7 +42,7 @@ resource "google_compute_security_policy" "pci_policy" {
       versioned_expr = "SRC_IPS_V1"
       # add your own ip address range
       config {
-        src_ip_ranges = ["*""]
+        src_ip_ranges = ["*"]
       }
     }
 
